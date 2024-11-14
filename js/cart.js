@@ -66,7 +66,6 @@ function removeFromCart(id) {
     updateCartModal();
 }
 
-// Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
@@ -85,16 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Limpiar el carrito primero
+        
         cart = [];
         updateCartCount();
         updateCartModal();
         
-        // Cerrar el modal usando Bootstrap
+        
         const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
         cartModal.hide();
         
-        // Limpiar los estilos del modal y mostrar el mensaje después de que se cierre
+        
         cartModal._element.addEventListener('hidden.bs.modal', function handler() {
             document.body.classList.remove('modal-open');
             document.body.style.overflow = '';
@@ -105,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalBackdrop.remove();
             }
             
-            // Mostrar el mensaje de éxito con SweetAlert2
+          
             setTimeout(() => {
                 Swal.fire({
                     title: '¡Gracias por tu compra!',
@@ -114,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }, 100);
             
-            // Remover este event listener después de ejecutarse
+            
             cartModal._element.removeEventListener('hidden.bs.modal', handler);
         }, { once: true });
     });
